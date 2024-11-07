@@ -15,7 +15,7 @@ def create_app():
     swagger = Swagger(app)
 
     # Configuração do banco de dados
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:chatbot123@chatbot123db.cibyemudu6rv.us-east-1.rds.amazonaws.com/db_123_ajuda'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://admin:chatbot123@chatbot123db.cibyemudu6rv.us-east-1.rds.amazonaws.com/chatbot123db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SQLALCHEMY_ECHO'] = True
 
