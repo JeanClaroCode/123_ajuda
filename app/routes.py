@@ -1,9 +1,19 @@
 from flask import abort, jsonify, request, Blueprint, render_template
 from flasgger import swag_from
 from app.models import UnidadeDeSaude
+print(UnidadeDeSaude)  # Deve imprimir a definição da classe
 
 bp = Blueprint("routes", __name__)
-
+@bp.route('/test_unidade', methods=['GET'])
+def test_unidade():
+    try:
+        unidade = UnidadeDeSaude.query.first()
+        if unidade:
+            return jsonify(unidade.to_dict())
+        else:
+            return jsonify({"message": "No UnidadeDeSaude records found."}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 @bp.route('/')
 def index():
     html_content = "<html><head><title>api 123 ajuda</title></head><body><h1>123 ajuda</h1></body></html>"
